@@ -1,12 +1,15 @@
 <resources>
-    <string name="app_name">mediaArchive</string>
+    <string name="app_name">Media Archive</string>
     <!-- All -->
     <string name="title">Tytuł</string>
     <string name="status_db">Status</string>
     <string name="type_db">Gatunek</string>
     <string name="year_of_publication">Rok wydania</string>
     <string name="upload_button">Prześlij do bazy</string>
-
+    <!-- Main -->
+    <string name="main_movie">Filmy/Seriale</string>
+    <string name="main_game">Gry</string>
+    <string name="main_books">Książki</string>
     <!-- Book -->
     <string name="book_author_first_name">Imię autora</string>
     <string name="book_author_last_name">Nazwisko autora</string>
