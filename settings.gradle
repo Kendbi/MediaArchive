@@ -1,0 +1,2 @@
+rootProject.name='mediaArchive'
+include ':app'
