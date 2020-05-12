@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".movieInput" >
+    tools:context=".dataInput" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="581dp" />
+        android:layout_height="568dp" />
 
     <TextView
-        android:id="@+id/movieTitle"
+        android:id="@+id/bookTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title"
@@ -23,54 +23,50 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/movieDirectorFirstName"
+            android:id="@+id/bookAuthorFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/movie_director_first_name"
+            android:text="@string/book_author_first_name"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/movieDirectorLastName"
+            android:id="@+id/bookAuthorLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/movie_director_last_name"
+            android:text="@string/book_author_last_name"
             android:textSize="18sp" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/movieTypeSpinner"
-            android:layout_width="271dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:entries="@array/movie_type" />
-
-        <TextView
-            android:id="@+id/movieYearOfPublication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/year_of_publication"
-            android:textSize="18sp" />
     </LinearLayout>
 
     <Spinner
-        android:id="@+id/movieStatusSpinner"
+        android:id="@+id/bookType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/movie_status" />
+        android:entries="@array/book_type"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/bookYearOfPublication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/year_of_publication"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/bookStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/book_status" />
 
     <Button
-        android:id="@+id/movieUploadButton"
+        android:id="@+id/bookUploadButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#673AB7"
+        android:layout_height="37dp"
+        android:background="#673AB7"
         android:text="@string/upload_button"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
 </LinearLayout>

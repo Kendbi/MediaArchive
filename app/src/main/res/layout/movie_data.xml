@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".movieInput" >
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="581dp" />
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/movieTitle"
+        android:id="@+id/movieTitleDB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title"
-        android:textSize="22sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,20 +17,20 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/movieDirectorFirstName"
+            android:id="@+id/movieDirectorFirstNameDB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/movie_director_first_name"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/movieDirectorLastName"
+            android:id="@+id/movieDirectorLastNameDB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/movie_director_last_name"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,33 +38,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/movieTypeSpinner"
-            android:layout_width="271dp"
+        <TextView
+            android:id="@+id/movieTypeDB"
+            android:layout_width="246dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:entries="@array/movie_type" />
+            android:text="@string/type_db"
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/movieYearOfPublication"
+            android:id="@+id/movieReleaseDateDB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/year_of_publication"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/movieStatusSpinner"
+    <TextView
+        android:id="@+id/movieStatusDB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/movie_status" />
-
-    <Button
-        android:id="@+id/movieUploadButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#673AB7"
-        android:text="@string/upload_button"
-        android:textColor="#FFFFFF" />
+        android:text="@string/status_db"
+        android:textSize="20sp" />
 </LinearLayout>

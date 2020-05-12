@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">mediaArchive</string>
+    <!-- All -->
+    <string name="title">Tytuł</string>
+    <string name="status_db">Status</string>
+    <string name="type_db">Gatunek</string>
+    <string name="year_of_publication">Rok wydania</string>
+    <string name="upload_button">Prześlij do bazy</string>
+
+    <!-- Book -->
+    <string name="book_author_first_name">Imię autora</string>
+    <string name="book_author_last_name">Nazwisko autora</string>
+    <string-array name="book_type">
+        <item>Dramat</item>
+        <item>Fikcja naukowa</item>
+        <item>Fantasy</item>
+        <item>Historia alternatywna</item>
+        <item>Horror</item>
+        <item>Powieść</item>
+        <item>Kryminał</item>
+        <item>Opowiadanie</item>
+        <item>Literatura faktu</item>
+        <item>Naukowa</item>
+        <item>Psychologiczna</item>
+        <item>Przyrodnicza</item>
+        <item>Biografia/Autobiografia</item>
+        <item>Romans</item>
+    </string-array>
+    <string-array name="book_status">
+        <item>Przeczytana</item>
+        <item>Nieprzeczytana</item>
+    </string-array>
+
+    <!-- Game -->
+    <string name="game_developer">Developer</string>
+    <string name="game_platform">Plarforma</string>
+    <string-array name="game_status">
+        <item>Ukończona</item>
+        <item>Nieukończona</item>
+    </string-array>
+    <string-array name="game_type">
+        <item>RPG</item>
+        <item>Akcji</item>
+        <item>Wyścigi</item>
+        <item>RTS</item>
+        <item>Survival Horror</item>
+        <item>Hack n' slash</item>
+        <item>Logiczna</item>
+        <item>Strzelanka</item>
+        <item>Bijatyka</item>
+        <item>Symulator</item>
+        <item>Edukacyjna</item>
+        <item>Zręcznościowa</item>
+    </string-array>
+
+    <!-- Movie -->
+    <string name="movie_director_first_name">Imię reżysera</string>
+    <string name="movie_director_last_name">Nazwisko reżysera</string>
+    <string-array name="movie_type">
+        <item>Dramat</item>
+        <item>Fantastyka naukowa</item>
+        <item>Fantasy</item>
+        <item>Horror</item>
+        <item>Kryminał</item>
+        <item>Animowany</item>
+        <item>Komedia</item>
+        <item>Dokumentalny</item>
+        <item>Psychologiczny</item>
+        <item>Przyrodniczy</item>
+        <item>Romantyczny</item>
+        <item>Wester</item>
+        <item>Biograficzny</item>
+        <item>Czarna komedia</item>
+        <item>Obyczajowe</item>
+        <item>Dreszczowiec</item>
+        <item>Edukacyjny</item>
+        <item>Familijny</item>
+        <item>Gangsterski</item>
+        <item>Noir</item>
+        <item>Historia alternatywna</item>
+        <item>Katastroficzny</item>
+        <item>Sztuki walki</item>
+        <item>Film płaszcza i szpady</item>
+        <item>Melodramat</item>
+        <item>Przygodowy</item>
+        <item>Szpiegowski</item>
+        <item>Wojenny</item>
+    </string-array>
+
+    <string-array name="movie_status">
+        <item>Obejrzany</item>
+        <item>Nieobejrzany</item>
+    </string-array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
