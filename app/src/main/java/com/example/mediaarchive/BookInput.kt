@@ -1,10 +1,12 @@
 package com.example.mediaarchive
 
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,13 +28,17 @@ class BookInput : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_book_input, container, false)
         var recyclerViewBook = rootView.findViewById<View>(R.id.recyclerViewBook) as RecyclerView
         recyclerViewBook.layoutManager = GridLayoutManager(context, 1)
-        //recyclerViewBook.adapter = BookAdapter(listOfBooks)
 
         val firebase = FirebaseDatabase.getInstance()
         databaseReference = firebase.getReference("BooksData")
 
+        listOfBooks = ArrayList()
+        recyclerViewBook.adapter = BookAdapter(listOfBooks)
 
-        bookUploadButton.setOnClickListener {
+        //sprawdzić czy poprawnie zmieniam fragmenty
+
+        var bookUploadBtn = rootView.findViewById<Button>(R.id.bookUploadButton)
+        bookUploadBtn.setOnClickListener {
             val title = bookTitleInput.text.toString()
             val authorFirstName = bookAuthorFirstNameInput.text.toString()
             val authorLastName = bookAuthorLastNameInput.text.toString()
