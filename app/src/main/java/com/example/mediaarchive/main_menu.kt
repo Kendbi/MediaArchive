@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_main_menu.*
 
 
 class main_menu : Fragment() {
@@ -12,6 +15,13 @@ class main_menu : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main_menu, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_main_menu, container, false)
+
+        var bookBtn = rootView.findViewById<Button>(R.id.go_to_book)
+        bookBtn.setOnClickListener{
+            (activity as MainActivity).goToBook()
+        }
+
+        return rootView
     }
 }
