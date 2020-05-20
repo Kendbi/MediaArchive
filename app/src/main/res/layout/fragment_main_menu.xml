@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="140sp"
+        android:paddingBottom="80sp"
         android:text="@string/app_name"
         android:textColor="#2A2532"
-        android:textSize="89sp" />
+        android:textSize="80sp" />
 
     <Button
         android:id="@+id/go_to_book"
@@ -43,4 +43,14 @@
         android:text="@string/main_movie"
         android:textColor="#FFFFFF"
         android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#673AB7"
+        android:text="@string/logout_button"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
 </LinearLayout>

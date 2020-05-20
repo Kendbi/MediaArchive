@@ -6,6 +6,9 @@
     <string name="type_db">Gatunek</string>
     <string name="year_of_publication">Rok wydania</string>
     <string name="upload_button">Prześlij do bazy</string>
+    <string name="delete_button">Usuń</string>
+    <string name="edit_button">Edytuj</string>
+    <string name="logout_button">Wyloguj</string>
     <!-- Main -->
     <string name="main_movie">Filmy/Seriale</string>
     <string name="main_game">Gry</string>
@@ -95,8 +98,10 @@
         <item>Nieobejrzany</item>
     </string-array>
 
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Logowanie-->
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Hasło</string>
+    <string name="login_button">Zaloguj</string>
+    <string name="signin_button">Zarejestruj</string>
 
 </resources>

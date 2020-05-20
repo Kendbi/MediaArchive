@@ -17,6 +17,11 @@ class main_menu : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_main_menu, container, false)
 
+        var logoutBtn = rootView.findViewById<Button>(R.id.logout_button)
+        logoutBtn.setOnClickListener {
+            (activity as MainActivity).logout()
+        }
+
         var bookBtn = rootView.findViewById<Button>(R.id.go_to_book)
         bookBtn.setOnClickListener{
             (activity as MainActivity).goToBook()

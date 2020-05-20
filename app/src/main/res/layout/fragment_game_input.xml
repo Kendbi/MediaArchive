@@ -16,14 +16,14 @@
         android:id="@+id/gameTitleInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:hint="@string/title"
         android:textSize="22sp" />
 
     <EditText
         android:id="@+id/developerNameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/game_developer"
+        android:hint="@string/game_developer"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -43,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/year_of_publication"
             android:textSize="18sp" />
 
     </LinearLayout>

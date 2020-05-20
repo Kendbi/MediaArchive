@@ -12,6 +12,8 @@ class MovieAdapter(private val dataArray: ArrayList<MovieRow>) :
             MyViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.movie_data, parent, false)
+
+
         return MyViewHolder(view)
     }
 

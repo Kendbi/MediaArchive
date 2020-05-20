@@ -56,7 +56,6 @@ class BookInput : Fragment() {
             val toast = Toast.makeText(context, "Poszło", Toast.LENGTH_LONG)
             toast.show()
 
-
         }
 
 
