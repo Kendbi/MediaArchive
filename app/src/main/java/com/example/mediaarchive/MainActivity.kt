@@ -22,38 +22,29 @@ class MainActivity : AppCompatActivity() {
 
         val mainMenu = main_menu()
         val fm:FragmentManager = supportFragmentManager
-        val bookInput: Fragment = BookInput()
-        val movieInput = MovieInput()
-        val gameInput = GameInput()
 
-        //val bookBtn: Button = findViewById(R.id.go_to_book)
-        //val gameBtn: Button = findViewById(R.id.go_to_games)
-        //val movieBtn: Button = findViewById(R.id.go_to_movies)
         fm.beginTransaction().add(R.id.mainAct, mainMenu).addToBackStack(null).commit()
 
-        /*bookBtn.setOnClickListener{
-            fm.beginTransaction().add(R.id.mainAct, bookInput).addToBackStack(null).commit()
-            val toast = Toast.makeText(applicationContext, "Poszło", Toast.LENGTH_LONG)
-            toast.show()
-
-        }
-        gameBtn.setOnClickListener{
-            fm.beginTransaction().replace(R.id.mainAct, gameInput).addToBackStack(null).commit()
-        }
-        movieBtn.setOnClickListener{
-            fm.beginTransaction().replace(R.id.mainAct, movieInput).addToBackStack(null).commit()
-        }*/
 
 
     }
 
-    public fun goToBook(){
+    fun goToBook(){
         val fm:FragmentManager = supportFragmentManager
         val bookInput: Fragment = BookInput()
         fm.beginTransaction().replace(R.id.mainAct, bookInput).addToBackStack(null).commit()
-        val toast = Toast.makeText(applicationContext, "Poszło", Toast.LENGTH_LONG)
-        toast.show()
 
+    }
+    fun goToGame(){
+        val fm:FragmentManager = supportFragmentManager
+        val gameInput: Fragment = GameInput()
+        fm.beginTransaction().replace(R.id.mainAct, gameInput).addToBackStack(null).commit()
+
+    }
+    fun goToMovie(){
+        val fm:FragmentManager = supportFragmentManager
+        val movieInput: Fragment = MovieInput()
+        fm.beginTransaction().replace(R.id.mainAct, movieInput).addToBackStack(null).commit()
     }
 
 }

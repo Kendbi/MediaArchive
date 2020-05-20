@@ -5,55 +5,77 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_movie_input.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [movieInput.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MovieInput : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var databaseReference: DatabaseReference
+    private  lateinit var listOfMovies: ArrayList<MovieRow>
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val rootView = inflater.inflate(R.layout.fragment_movie_input, container, false)
+        var recyclerViewMovie = rootView.findViewById<View>(R.id.recyclerViewMovie) as RecyclerView
+        recyclerViewMovie.layoutManager = GridLayoutManager(context, 1)
+
+        val firebase = FirebaseDatabase.getInstance()
+        databaseReference = firebase.getReference("MoviesData")
+
+        listOfMovies = ArrayList()
+        recyclerViewMovie.adapter = MovieAdapter(listOfMovies)
+
+
+        var movieUploadBtn = rootView.findViewById<Button>(R.id.movieUploadButton)
+        movieUploadBtn.setOnClickListener {
+            val title = movieTitle.text.toString()
+            val directorFirstName = movieDirectorFirstName.text.toString()
+            val directorLastName = movieDirectorLastName.text.toString()
+            val type = movieTypeSpinner.selectedItem.toString()
+            val yearOfPublication = movieYearOfPublication.text.toString().toInt()
+            val status = movieStatusSpinner.selectedItem.toString()
+
+            val firebaseInput = MovieRow(
+                title, directorFirstName, directorLastName, type,
+                yearOfPublication, status
+            )
+
+            databaseReference.child("${Date().time}").setValue(firebaseInput)
+
+
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_input, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment movieInput.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MovieInput().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {
             }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                listOfMovies = ArrayList()
+
+                for (row in dataSnapshot.children) {
+                    val newRow = row.getValue(MovieRow::class.java)
+                    listOfMovies.add(newRow!!)
+                }
+
+                setupAdapter(listOfMovies)
+
+            }
+
+            private fun setupAdapter(arrayData: ArrayList<MovieRow>) {
+                recyclerViewMovie.adapter = MovieAdapter(arrayData)
+            }
+
+        })
+
+        return rootView
     }
+
 }
