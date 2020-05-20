@@ -22,24 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         val mainMenu = main_menu()
         val fm:FragmentManager = supportFragmentManager
-        val bookInput: Fragment = BookInput()
-        val movieInput = MovieInput()
-        val gameInput = GameInput()
 
         fm.beginTransaction().add(R.id.mainAct, mainMenu).addToBackStack(null).commit()
 
-        /*bookBtn.setOnClickListener{
-            fm.beginTransaction().add(R.id.mainAct, bookInput).addToBackStack(null).commit()
-            val toast = Toast.makeText(applicationContext, "Poszło", Toast.LENGTH_LONG)
-            toast.show()
-
-        }
-        gameBtn.setOnClickListener{
-            fm.beginTransaction().replace(R.id.mainAct, gameInput).addToBackStack(null).commit()
-        }
-        movieBtn.setOnClickListener{
-            fm.beginTransaction().replace(R.id.mainAct, movieInput).addToBackStack(null).commit()
-        }*/
 
 
     }
@@ -55,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         val gameInput: Fragment = GameInput()
         fm.beginTransaction().replace(R.id.mainAct, gameInput).addToBackStack(null).commit()
 
+    }
+    fun goToMovie(){
+        val fm:FragmentManager = supportFragmentManager
+        val movieInput: Fragment = MovieInput()
+        fm.beginTransaction().replace(R.id.mainAct, movieInput).addToBackStack(null).commit()
     }
 
 }

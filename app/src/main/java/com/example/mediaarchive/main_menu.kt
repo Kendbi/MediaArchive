@@ -27,6 +27,10 @@ class main_menu : Fragment() {
             (activity as MainActivity).goToGame()
         }
 
+        var movieBtn = rootView.findViewById<Button>(R.id.go_to_movies)
+        movieBtn.setOnClickListener{
+            (activity as MainActivity).goToMovie()
+        }
 
         return rootView
     }
