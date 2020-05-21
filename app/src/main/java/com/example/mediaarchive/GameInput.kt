@@ -1,5 +1,6 @@
 package com.example.mediaarchive
 
+import android.icu.text.CaseMap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_book_input.*
 import kotlinx.android.synthetic.main.fragment_game_input.*
+import kotlinx.android.synthetic.main.game_data.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -37,7 +39,7 @@ class GameInput : Fragment() {
         listOfGames = ArrayList()
         recyclerViewGame.adapter = GameAdapter(listOfGames)
 
-        //sprawdzić czy poprawnie zmieniam fragmenty
+
 
         var gameUploadBtn = rootView.findViewById<Button>(R.id.gameUploadButton)
         gameUploadBtn.setOnClickListener {
@@ -56,6 +58,7 @@ class GameInput : Fragment() {
 
 
         }
+
 
 
         databaseReference.addValueEventListener(object : ValueEventListener {
