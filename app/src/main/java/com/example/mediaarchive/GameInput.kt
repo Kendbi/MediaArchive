@@ -33,6 +33,7 @@ class GameInput : Fragment(), GameAdapter.OnGameDeleteListener {
         var recyclerViewGame = rootView.findViewById<View>(R.id.recyclerViewGame) as RecyclerView
         recyclerViewGame.layoutManager = GridLayoutManager(context, 1)
 
+
         val firebase = FirebaseDatabase.getInstance()
         databaseReference = firebase.getReference("GamesData")
 

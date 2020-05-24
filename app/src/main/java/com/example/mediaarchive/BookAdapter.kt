@@ -45,8 +45,6 @@ class BookAdapter(private val dataArray: ArrayList<BookRow>, var clickListner: O
         val bookTypeDB = view.findViewById(R.id.bookTypeDB) as TextView
         val bookYearOfPublicationDB = view.findViewById(R.id.bookYearOfPublicationDB) as TextView
         val bookStatusDB = view.findViewById(R.id.bookStatusDB) as TextView
-        val bookDeleteBtn = view.findViewById(R.id.bookDeleteButton) as Button
-        //val bookEditBtn = view.findViewById(R.id.bookEditButton) as Button
 
         fun initialize(item: BookRow, action: OnBookDeleteListener){
             itemView.setOnClickListener{

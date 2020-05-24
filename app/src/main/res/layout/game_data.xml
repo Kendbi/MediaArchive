@@ -12,70 +12,54 @@
         android:text="@string/title"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/gameDeveloperDB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/game_developer"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/gameTypeDB"
-            android:layout_width="277dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/type_db"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/gameYearOfPublicationDB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/year_of_publication"
-            android:textSize="20sp" />
-    </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:background="@drawable/border">
 
         <TextView
-            android:id="@+id/gameStatusDB"
+            android:id="@+id/gameDeveloperDB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/status_db"
+            android:text="@string/game_developer"
             android:textSize="20sp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/gameEditButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#25E42D"
-            android:text="@string/edit_button" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/gameDeleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FB0C0C"
-            android:text="@string/delete_button"
-            android:textColor="#FFFFFF" />
+            <TextView
+                android:id="@+id/gameTypeDB"
+                android:layout_width="277dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/type_db"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/gameYearOfPublicationDB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/year_of_publication"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gameStatusDB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/status_db"
+                android:textSize="20sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

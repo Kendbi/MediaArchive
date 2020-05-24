@@ -12,34 +12,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="80sp"
+        android:paddingBottom="150sp"
         android:text="@string/app_name"
         android:textColor="#2A2532"
         android:textSize="80sp" />
 
-    <Button
-        android:id="@+id/go_to_book"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#673AB7"
-        android:text="@string/main_books"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/go_to_games"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#673AB7"
-        android:text="@string/main_game"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp" />
+        <Button
+            android:id="@+id/go_to_book"
+            android:layout_width="212dp"
+            android:layout_height="70dp"
+            android:backgroundTint="#673AB7"
+            android:drawableBottom="@drawable/book_open_outline"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/go_to_games"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:backgroundTint="#673AB7"
+            android:drawableBottom="@drawable/gamepad_square"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/go_to_movies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:backgroundTint="#673AB7"
+        android:drawableTop="@drawable/filmstrip_box_multiple"
         android:text="@string/main_movie"
         android:textColor="#FFFFFF"
         android:textSize="40sp" />
@@ -47,10 +54,10 @@
     <Button
         android:id="@+id/logout_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="70dp"
         android:backgroundTint="#673AB7"
-        android:text="@string/logout_button"
+        android:drawableTop="@drawable/logout"
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
+
 </LinearLayout>
