@@ -18,7 +18,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class GameInput : Fragment() {
+class GameInput : Fragment(), GameAdapter.OnGameDeleteListener {
 
     private lateinit var databaseReference: DatabaseReference
     private  lateinit var listOfGames: ArrayList<GameRow>
@@ -37,12 +37,13 @@ class GameInput : Fragment() {
         databaseReference = firebase.getReference("GamesData")
 
         listOfGames = ArrayList()
-        recyclerViewGame.adapter = GameAdapter(listOfGames)
+        recyclerViewGame.adapter = GameAdapter(listOfGames, this)
 
 
 
         var gameUploadBtn = rootView.findViewById<Button>(R.id.gameUploadButton)
         gameUploadBtn.setOnClickListener {
+            val id = Date().time.toString()
             val title = gameTitleInput.text.toString()
             val developerName = developerNameInput.text.toString()
             val type = gameTypeInput.selectedItem.toString()
@@ -50,11 +51,11 @@ class GameInput : Fragment() {
             val status = gameStatusInput.selectedItem.toString()
 
             val firebaseInput = GameRow(
-                title, developerName, type,
+                id, title, developerName, type,
                 yearOfPublication, status
             )
 
-            databaseReference.child("${Date().time}").setValue(firebaseInput)
+            databaseReference.child(id).setValue(firebaseInput)
 
 
         }
@@ -79,12 +80,22 @@ class GameInput : Fragment() {
             }
 
             private fun setupAdapter(arrayData: ArrayList<GameRow>) {
-                recyclerViewGame.adapter = GameAdapter(arrayData)
+                recyclerViewGame.adapter = GameAdapter(arrayData, this@GameInput)
             }
 
         })
 
+
+
         return rootView
+    }
+    override fun onItemClick(item: GameRow, position: Int) {
+        deleteGame(item.readGameID())
+    }
+
+    fun deleteGame(gameID: String){
+        databaseReference.child(gameID).removeValue()
+        Toast.makeText(context, "Usunięto", Toast.LENGTH_LONG).show()
     }
 
 

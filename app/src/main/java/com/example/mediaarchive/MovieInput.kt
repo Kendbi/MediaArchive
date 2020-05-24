@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_movie_input.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MovieInput : Fragment() {
+class MovieInput : Fragment(), MovieAdapter.OnMovieDeleteListener {
 
     private lateinit var databaseReference: DatabaseReference
     private  lateinit var listOfMovies: ArrayList<MovieRow>
@@ -29,11 +29,12 @@ class MovieInput : Fragment() {
         databaseReference = firebase.getReference("MoviesData")
 
         listOfMovies = ArrayList()
-        recyclerViewMovie.adapter = MovieAdapter(listOfMovies)
+        recyclerViewMovie.adapter = MovieAdapter(listOfMovies, this)
 
 
         var movieUploadBtn = rootView.findViewById<Button>(R.id.movieUploadButton)
         movieUploadBtn.setOnClickListener {
+            val id = Date().time.toString()
             val title = movieTitle.text.toString()
             val directorFirstName = movieDirectorFirstName.text.toString()
             val directorLastName = movieDirectorLastName.text.toString()
@@ -42,11 +43,11 @@ class MovieInput : Fragment() {
             val status = movieStatusSpinner.selectedItem.toString()
 
             val firebaseInput = MovieRow(
-                title, directorFirstName, directorLastName, type,
+                id, title, directorFirstName, directorLastName, type,
                 yearOfPublication, status
             )
 
-            databaseReference.child("${Date().time}").setValue(firebaseInput)
+            databaseReference.child(id).setValue(firebaseInput)
 
 
         }
@@ -70,12 +71,20 @@ class MovieInput : Fragment() {
             }
 
             private fun setupAdapter(arrayData: ArrayList<MovieRow>) {
-                recyclerViewMovie.adapter = MovieAdapter(arrayData)
+                recyclerViewMovie.adapter = MovieAdapter(arrayData, this@MovieInput)
             }
 
         })
 
         return rootView
+    }
+    override fun onItemClick(item: MovieRow, position: Int) {
+        deleteMovie(item.readMovieID())
+    }
+
+    fun deleteMovie(movieID: String){
+        databaseReference.child(movieID).removeValue()
+        Toast.makeText(context, "Usunięto", Toast.LENGTH_LONG).show()
     }
 
 }

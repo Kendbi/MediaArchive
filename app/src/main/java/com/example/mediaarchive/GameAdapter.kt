@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class GameAdapter(private val dataArray: ArrayList<GameRow>) :
+class GameAdapter(private val dataArray: ArrayList<GameRow>, var clickListner: OnGameDeleteListener) :
     RecyclerView.Adapter<GameAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             MyViewHolder {
@@ -30,6 +30,8 @@ class GameAdapter(private val dataArray: ArrayList<GameRow>) :
             dataArray[holder.adapterPosition].gameYearOfPublication.toString()
         holder.gameStatusDB.text =
             dataArray[holder.adapterPosition].gameStatus
+        holder.initialize(dataArray.get(position),clickListner)
+
 
 
     }
@@ -40,5 +42,13 @@ class GameAdapter(private val dataArray: ArrayList<GameRow>) :
         val gameTypeDB = view.findViewById(R.id.gameTypeDB) as TextView
         val gameYearOfPublicationDB = view.findViewById(R.id.gameYearOfPublicationDB) as TextView
         val gameStatusDB = view.findViewById(R.id.gameStatusDB) as TextView
+        fun initialize(item: GameRow, action: OnGameDeleteListener){
+            itemView.setOnClickListener{
+                action.onItemClick(item,adapterPosition)
+            }
+        }
+    }
+    interface OnGameDeleteListener{
+        fun onItemClick(item: GameRow, position: Int)
     }
 }

@@ -30,8 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         fm.beginTransaction().add(R.id.mainAct, mainMenu).addToBackStack(null).commit()
 
-
-
     }
 
     fun logout(){
@@ -58,5 +56,6 @@ class MainActivity : AppCompatActivity() {
         val movieInput: Fragment = MovieInput()
         fm.beginTransaction().replace(R.id.mainAct, movieInput).addToBackStack(null).commit()
     }
+
 
 }

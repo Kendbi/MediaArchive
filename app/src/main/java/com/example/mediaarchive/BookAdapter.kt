@@ -3,12 +3,11 @@ package com.example.mediaarchive
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_book_input.view.*
 
-class BookAdapter(private val dataArray: ArrayList<BookRow>) :
+class BookAdapter(private val dataArray: ArrayList<BookRow>, var clickListner: OnBookDeleteListener) :
     RecyclerView.Adapter<BookAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             MyViewHolder {
@@ -34,6 +33,7 @@ class BookAdapter(private val dataArray: ArrayList<BookRow>) :
             dataArray[holder.adapterPosition].bookYearOfPublication.toString()
         holder.bookStatusDB.text =
             dataArray[holder.adapterPosition].bookStatus
+        holder.initialize(dataArray.get(position),clickListner)
 
 
     }
@@ -45,5 +45,20 @@ class BookAdapter(private val dataArray: ArrayList<BookRow>) :
         val bookTypeDB = view.findViewById(R.id.bookTypeDB) as TextView
         val bookYearOfPublicationDB = view.findViewById(R.id.bookYearOfPublicationDB) as TextView
         val bookStatusDB = view.findViewById(R.id.bookStatusDB) as TextView
+        val bookDeleteBtn = view.findViewById(R.id.bookDeleteButton) as Button
+        //val bookEditBtn = view.findViewById(R.id.bookEditButton) as Button
+
+        fun initialize(item: BookRow, action: OnBookDeleteListener){
+            itemView.setOnClickListener{
+                action.onItemClick(item,adapterPosition)
+            }
+        }
+
     }
+
+    interface OnBookDeleteListener{
+        fun onItemClick(item: BookRow, position: Int)
+    }
+
+
 }

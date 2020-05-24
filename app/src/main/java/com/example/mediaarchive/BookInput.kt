@@ -1,6 +1,7 @@
 package com.example.mediaarchive
 
 import android.app.PendingIntent.getActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_book_input.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class BookInput : Fragment() {
+class BookInput : Fragment(), BookAdapter.OnBookDeleteListener {
 
     private lateinit var databaseReference: DatabaseReference
     private  lateinit var listOfBooks: ArrayList<BookRow>
@@ -33,12 +34,13 @@ class BookInput : Fragment() {
         databaseReference = firebase.getReference("BooksData")
 
         listOfBooks = ArrayList()
-        recyclerViewBook.adapter = BookAdapter(listOfBooks)
+        recyclerViewBook.adapter = BookAdapter(listOfBooks, this)
 
-        //sprawdzić czy poprawnie zmieniam fragmenty
+
 
         var bookUploadBtn = rootView.findViewById<Button>(R.id.bookUploadButton)
         bookUploadBtn.setOnClickListener {
+            val id = Date().time.toString()
             val title = bookTitleInput.text.toString()
             val authorFirstName = bookAuthorFirstNameInput.text.toString()
             val authorLastName = bookAuthorLastNameInput.text.toString()
@@ -47,16 +49,18 @@ class BookInput : Fragment() {
             val status = bookStatusInput.selectedItem.toString()
 
             val firebaseInput = BookRow(
-                title, authorFirstName, authorLastName, type,
+                id, title, authorFirstName, authorLastName, type,
                 yearOfPublication, status
             )
 
-            databaseReference.child("${Date().time}").setValue(firebaseInput)
+            databaseReference.child(id).setValue(firebaseInput)
 
             val toast = Toast.makeText(context, "Poszło", Toast.LENGTH_LONG)
             toast.show()
 
         }
+
+
 
 
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -77,8 +81,9 @@ class BookInput : Fragment() {
             }
 
             private fun setupAdapter(arrayData: ArrayList<BookRow>) {
-                recyclerViewBook.adapter = BookAdapter(arrayData)
+                recyclerViewBook.adapter = BookAdapter(arrayData, this@BookInput)
             }
+
 
         })
 
@@ -86,7 +91,14 @@ class BookInput : Fragment() {
     }
 
 
+    override fun onItemClick(item: BookRow, position: Int) {
+        deleteBook(item.readBookID())
+    }
 
+    fun deleteBook(bookID: String){
+        databaseReference.child(bookID).removeValue()
+        Toast.makeText(context, bookID, Toast.LENGTH_LONG).show()
+    }
 
 
 }
